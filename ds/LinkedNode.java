@@ -2,7 +2,7 @@ package ds;
 import ds.Node;
 
 /*
-	nodes which are in a linked list
+	nodes which are linked to other nodes
 */
 public class LinkedNode extends Node {
 	private LinkedNode nextNode = null;
