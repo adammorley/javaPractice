@@ -6,8 +6,11 @@ package ds;
 
 public class Node {
 	private int value;
+	public Node(int v) {
+		value = v;
+	}
 
-	public void setValue(int newValue) {
+	protected void setValue(int newValue) {
 		value = newValue;
 	}
 	public int getValue() {

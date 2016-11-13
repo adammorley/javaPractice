@@ -6,12 +6,26 @@ import ds.Node;
 */
 public class LinkedNode extends Node {
 	private LinkedNode nextNode = null;
+	private LinkedNode prevNode = null;
 
-	public void setNext(LinkedNode node) {
-		nextNode = node;
+	public LinkedNode(int v) {
+		super(v);
 	}
 
 	public LinkedNode getNext() {
 		return nextNode;
 	}
+
+	public LinkedNode getPrev() {
+		return prevNode;
+	}
+
+	public void setNext(LinkedNode node) {
+		nextNode = node;
+	}
+	
+	public void setPrev(LinkedNode node) {
+		prevNode = node;
+	}
+
 }

@@ -9,14 +9,11 @@ public class Program {
 		Factorial f = new Factorial();
 		int num = f.factorial(3);
 		print("factorial 3: " + String.valueOf(num));
-		Node n = new Node();
-		n.setValue(3);
+		Node n = new Node(3);
 		print("node value: " + String.valueOf(n.getValue()));
-		LinkedNode ln = new LinkedNode();
-		ln.setValue(4);
-		LinkedNode ln2 = new LinkedNode();
+		LinkedNode ln = new LinkedNode(4);
+		LinkedNode ln2 = new LinkedNode(5);
 		ln.setNext(ln2);
-		ln2.setValue(5);
 		if (ln.getNext() != ln2) {
 			print("broken");
 		}
