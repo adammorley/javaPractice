@@ -9,16 +9,6 @@ public class Program {
 		Factorial f = new Factorial();
 		int num = f.factorial(3);
 		print("factorial 3: " + String.valueOf(num));
-		Node n = new Node(3);
-		print("node value: " + String.valueOf(n.getValue()));
-		LinkedNode ln = new LinkedNode(4);
-		LinkedNode ln2 = new LinkedNode(5);
-		ln.setNext(ln2);
-		if (ln.getNext() != ln2) {
-			print("broken");
-		}
-		print("ln: " + String.valueOf(ln.getValue()));
-		print("ln2: " + String.valueOf(ln.getNext().getValue()));
 		LinkedList ll = new LinkedList();
 		ll.add(2);
 		ll.add(3);
@@ -29,6 +19,14 @@ public class Program {
 			print("something is wrong");
 		if (ll.testIfPresent(3))
 			print("found 3!");
+		ll.deleteLast();
+		if (ll.testIfPresent(4))
+			print("4 did not go away, something is wrong!");
+		ll.add(4);
+		ll.deleteByValue(3);
+		if (ll.testIfPresent(3))
+			print("3 did not go away, something is wrong!");
+
 		
 		
 	}

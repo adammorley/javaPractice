@@ -1,6 +1,6 @@
 package ds;
+import java.util.ArrayList;
 import ds.LinkedNode;
-import java.util.Iterator;
 
 /*
 	a linked list class
@@ -17,10 +17,6 @@ public class LinkedList {
 	private LinkedNode head = null;
 	private LinkedNode tail = null;
 	
-
-
-
-		
 	/*
 		add a new node to the end of the linked list
 	*/
@@ -37,9 +33,9 @@ public class LinkedList {
 			tail.setPrev(head);
 		}
 		else {
-			tail.setNext(node);
 			LinkedNode oldTail = tail;
 			tail = node;
+			oldTail.setNext(node);
 			tail.setPrev(oldTail);
 		}
 	}
@@ -69,7 +65,7 @@ public class LinkedList {
 		return current;
 	}
 
-	public boolean testIfPresent(int value) throws Exception {
+	public boolean testIfPresent(int value) {
 		this.resetIterator();
 		while (true) {
 			LinkedNode at = this.iterateForward();
@@ -87,14 +83,36 @@ public class LinkedList {
 	// to null for its next pointer
 	public LinkedNode deleteLast() {
 		LinkedNode oldTail = tail;
+		tail = oldTail.getPrev();
 		tail.setNext(null);
 		oldTail.setNext(null);
+		oldTail.setPrev(null);
 		return oldTail;
 	}
 
+	public ArrayList deleteByValue(int v) {
+		ArrayList<LinkedNode> deleted = new ArrayList<LinkedNode>();
+		// TODO: I really want to add the ability to execute code inside the
+		// tester...
+		if (this.testIfPresent(v)) {
+			this.resetIterator();
+			while(true) {
+				LinkedNode element = this.iterateForward();
+				if (element.getValue() == v) {
+					element.getPrev().setNext(element.getNext());
+					element.setNext(null);
+					element.setPrev(null);
+					deleted.add(element);
+				}
+			}
+		}
+		return deleted;
+	}
+
+
+
 	/*
 		to implement:
-			deleteLast
 			deleteByValue
 			deleteAllByValue
 			insertAfter
