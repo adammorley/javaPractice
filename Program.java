@@ -2,6 +2,7 @@ import math.Factorial;
 import ds.Node;
 import ds.LinkedList;
 import ds.LinkedNode;
+import ds.Tree;
 
 public class Program {
 	public static void main(String[] args) throws Exception {
@@ -26,6 +27,11 @@ public class Program {
 		ll.deleteByValue(3);
 		if (ll.testIfPresent(3))
 			print("3 did not go away, something is wrong!");
+
+		Tree t = new Tree(5);
+		if (!t.isStump())
+			print("tree broken");
+
 
 		
 		

@@ -5,7 +5,7 @@ package ds;
 */
 
 public class Node {
-	private int value;
+	protected int value;
 	public Node(int v) {
 		value = v;
 	}
