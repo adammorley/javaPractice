@@ -1,6 +1,7 @@
 package ds;
 import java.util.ArrayList;
 import ds.LinkedNode;
+import ds.KeyValue;
 
 /*
 	a linked list class
@@ -17,11 +18,13 @@ public class LinkedList {
 	private LinkedNode head = null;
 	private LinkedNode tail = null;
 	
+    public LinkedList() {
+    }
 	/*
 		add a new node to the end of the linked list
 	*/
-	public void add(int value) {
-		LinkedNode node = new LinkedNode(value);
+	public void add(KeyValue kv) {
+		LinkedNode node = new LinkedNode(kv);
 		//empty list
 		if (head == null) {
 			head = node;
@@ -39,20 +42,27 @@ public class LinkedList {
 			tail.setPrev(oldTail);
 		}
 	}
+
+/*    public String find(value) {
+        if (testIfPresent(value)) {
+            return value;
+        }
+        else {
+            return null;
+        }
+    }*/
+        
 	/*
 		iterating through list
 	*/
 	private LinkedNode current = null;
-	private void resetIterator() {
-		current = null;
+	public LinkedNode resetIterator() {
+		current = head;
+        return current;
 	}
-	private LinkedNode iterateForward() {
-		if (current == null) {
-			current = head;
-		}
-		else {
-			current = current.getNext();
-		}
+    // this loops forever!
+	public LinkedNode iterateForward() {
+	    current = current.getNext();
 		return current;
 	}
 	private LinkedNode iterateBackward() {
@@ -65,19 +75,19 @@ public class LinkedList {
 		return current;
 	}
 
-	public boolean testIfPresent(int value) {
+	/*public boolean testIfPresent(String value) {
 		this.resetIterator();
 		while (true) {
 			LinkedNode at = this.iterateForward();
 			if (at == null) {
 				return false;
 			}
-			else if (at.getValue() == value) {
+			else if (at.keyValue().equals(value)) {
 				return true;
 			}
 		}
 
-	}
+	}*/
 	// pop the tail off and update its pointers to null
 	// also set the new tail (the n-1 element of the list)
 	// to null for its next pointer
@@ -90,7 +100,7 @@ public class LinkedList {
 		return oldTail;
 	}
 
-	public ArrayList deleteByValue(int v) {
+	/*public ArrayList deleteByValue(String v) {
 		ArrayList<LinkedNode> deleted = new ArrayList<LinkedNode>();
 		// TODO: I really want to add the ability to execute code inside the
 		// tester...
@@ -98,8 +108,10 @@ public class LinkedList {
 			this.resetIterator();
 			while(true) {
 				LinkedNode element = this.iterateForward();
-				if (element.getValue() == v) {
-					element.getPrev().setNext(element.getNext());
+				if (element.get().equals(v)) {
+                    LinkedNode next = element.getNext();
+                    LinkedNode prev = element.getPrev();
+                    prev.setNext(next);
 					element.setNext(null);
 					element.setPrev(null);
 					deleted.add(element);
@@ -107,7 +119,7 @@ public class LinkedList {
 			}
 		}
 		return deleted;
-	}
+	}*/
 
 
 
@@ -118,7 +130,6 @@ public class LinkedList {
 			insertAfter
 			insertFirst
 			get (iterative)
-			testIfPresent
 	*/
 	
 }

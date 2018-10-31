@@ -1,5 +1,6 @@
 package ds;
 import ds.Node;
+import ds.KeyValue;
 
 /*
 	nodes which are linked to other nodes
@@ -8,7 +9,7 @@ public class LinkedNode extends Node {
 	private LinkedNode nextNode = null;
 	private LinkedNode prevNode = null;
 
-	public LinkedNode(int v) {
+	public LinkedNode(KeyValue v) {
 		super(v);
 	}
 
